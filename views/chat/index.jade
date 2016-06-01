@@ -1,0 +1,58 @@
+extends ../layout
+
+block scripts
+
+    script(src="/js/chat.js")
+
+block content
+    div(ng-app="chatApp")
+        div(ng-controller="ChatCtrl")
+            .col-md-3
+                .panel.panel-default
+                    .panel-heading
+                        button.btn.btn-default(type="button" ng-click="open()")
+                            span.glyphicon.glyphicon-plus(aria-hidden="true")
+                            | Добавить чат
+                    .panel-body
+                        ul#chat-rooms.list-group(
+                        selectable="selection"
+                        selectable-list="rooms"
+                        selectable-out="selected"
+                        selectable-events="{stop:'roomSelected($selected)'}"
+                        )
+                            li.list-group-item.ui-widget-content(ng-repeat="room in rooms") {{room.name}}
+                    .panel-footer
+            .col-md-6
+                .panel.panel-default
+                    .panel-heading Сообщения
+                    .panel-body
+                        ul
+                            li(ng-repeat='message in messages')
+                                div.time {{message.created | date:'dd.MM.yyyy HH:mm:ss'}}
+                                div.author {{message.sender.login}}
+                                div.message {{message.text}}
+                    .panel-footer
+                        form(ng-submit='sendMessage()')
+                            .input-group
+                                input.form-control(type="text", ng-model='message', placeholder='Наберите сообщение ...')
+                                span.input-group-btn
+                                    input.btn.btn-default(type='submit', value='Отправить')
+
+            .col-md-3
+                .panel.panel-default
+                    .panel-body
+                        div(ng-repeat='account in activeRoomAccounts') {{account.login}}
+                    .panel-footer
+
+            script#accountsModal(type="text/ng-template")
+                .modal-header
+                    h3.modal-title Добавить чат
+                .modal-body
+                    ui-select(multiple ng-model="accounts.selected" theme="bootstrap")
+                        ui-select-match(placeholder="Выберите пользователя") {{$item.login}}
+                        ui-select-choices(repeat="account in all | propsFilter: {login: $select.search}")
+                            small {{account.login}}
+
+                .modal-footer
+                    button.btn.btn-primary(type="button" ng-click="ok()") OK
+                    button.btn.btn-warning(type="button" ng-click="cancel()") Cancel

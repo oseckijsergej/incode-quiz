@@ -1,0 +1,25 @@
+nav.navbar.navbar-default
+    .container
+        .navbar-header
+            .navbar-brand Меню
+        if !account
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a(href="/reset") Восстановить
+                li
+                    a(href="/account/new") Регистрироваться
+
+            form.navbar-form.navbar-right(role="login", action="/login", method='POST')
+                .form-group
+                    input.form-control(name="login" type="text" placeholder="Логин")
+                .form-group
+                    input.form-control(name="password" type="password" placeholder="Пароль")
+                button.btn.btn-default(type="submit") Войти
+        else
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a(href='/chat') Чат
+                li
+                    a(href="/") #{account.login}
+                li
+                    a(href="/logout") Выйти

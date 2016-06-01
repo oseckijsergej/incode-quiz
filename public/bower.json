@@ -1,0 +1,24 @@
+{
+  "name": "public",
+  "authors": [
+    "hike <y.plastun@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "^1.3.2",
+    "angular": "~1.5.5",
+    "bootstrap": "^3.3.6",
+    "ngSelectable": "^1.0.5",
+    "ui-select": "angular-ui-select#^0.16.1"
+  }
+}

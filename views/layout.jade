@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        title= title
+        link(rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css")
+        link(rel="stylesheet" href="/style.css")
+        script(src="/bower_components/jquery/dist/jquery.min.js")
+        script(src="/bower_components/angular/angular.min.js")
+        script(src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js")
+        script(src="/bower_components/ui-select/dist/select.min.js")
+        link(rel="stylesheet" href="/bower_components/ui-select/dist/select.min.css")
+        script(src="/bower_components/ngSelectable/src/ngSelectable.js")
+        script(src="/bower_components/jquery-ui/jquery-ui.min.js")
+        script(src='/socket.io/socket.io.js')
+        script(src="/js/lib.js")
+        block scripts
+    body
+        include ./common/nav.jade
+        .container
+            .page-header
+                h1= title
+            .row
+                block content
