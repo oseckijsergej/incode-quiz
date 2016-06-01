@@ -19,6 +19,7 @@
     "angular": "~1.5.5",
     "bootstrap": "^3.3.6",
     "ngSelectable": "^1.0.5",
-    "ui-select": "angular-ui-select#^0.16.1"
+    "ui-select": "angular-ui-select#^0.16.1",
+    "ng-admin": "^0.9.1"
   }
 }
